@@ -2,73 +2,92 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
   
-  <title>Frontend Mentor | Product list with cart</title>
+  <title>Product list with cart | Gabriela Piovesan Plinski</title>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+  <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
 
-  Desserts
+  <main class="shop">
+    <h1>Desserts</h1>
+    <div>
+      <img src="assets/images/image-waffle-desktop.jpg" alt="Waffle with Sugar and Strawberries">
+      <p class="dessert">Waffle with Berries</p>
+      <p class="item">Waffle</p>
+      <p class="price">6.50</p>
+      <button>Add to Cart</button>
+    </div>
+    <div>
+      <img src="assets/images/image-creme-brulee-desktop.jpg" alt="Bean Crème Brûlée">
+      <p class="description">Vanilla Bean Crème Brûlée</p>
+      <p class="item">Crème Brûlée</p>
+      <p class="price">7.00</p>
+      <button>Add to Cart</button>
+    </div>
+    <div>
+      <img src="assets/images/image-macaron-desktop.jpg" alt="Five Colored Macaron">
+      <p class="description">Macaron Mix of Five</p>
+      <p class="item">Macaron</p>
+      <p class="price">8.00</p>
+      <button>Add to Cart</button>
+    </div>
+    <div>
+      <img src="assets/images/image-tiramisu-desktop.jpg" alt="Tiramisu With Berries">
+      <p class="description">Classic Tiramisu</p>
+      <p class="item">Tiramisu</p>
+      <p class="price">5.50</p>
+      <button>Add to Cart</button>
+    </div>
+    <div>
+      <img src="assets/images/image-baklava-desktop.jpg" alt="Three Pistachio Baklava">
+      <p class="description">Pistachio Baklava</p>
+      <p class="item">Baklava</p>
+      <p class="price">4.00</p>
+      <button>Add to Cart</button>
+    </div>
+    <div>
+      <img src="assets/images/image-meringue-desktop.jpg" alt="Lemon and Meringue Pie">
+      <p class="description">Lemon Meringue Pie</p>
+      <p class="item">Pie</p>
+      <p class="price">5.00</p>
+      <button>Add to Cart</button>
+    </div>
+    <div>
+      <img src="assets/images/image-cake-desktop.jpg" alt="Red Velvet Cake With Strawberries">
+      <p class="description">Red Velvet Cake</p>
+      <p class="item">Cake</p>
+      <p class="price">4.50</p>
+      <button>Add to Cart</button>
+    </div>
+    <div>
+      <img src="assets/images/image-brownie-desktop.jpg" alt="Salted Caramel Brownie With Ice Cream">
+      <p class="description">Salted Caramel Brownie</p>
+      <p class="item">Brownie</p>
+      <p class="price">4.50</p>
+      <button>Add to Cart</button>
+    </div>
+    <div>
+      <img src="assets/images/image-panna-cotta-desktop.jpg" alt="Vanilla Panna Cotta">
+      <p class="description">Vanilla Panna Cotta</p>
+      <p class="item">Panna Cotta</p>
+      <p class="price">6.50</p>
+      <button>Add to Cart</button>
+    </div>
+  </main>
 
-  Waffle with Berries
-  Waffle
-  6.50
-  Add to Cart
+  <aside class="cart">
+    <h2>Your Cart (<!-- Quantity -->)</h2>
+    <img src="assets/images/illustration-empty-cart.svg" alt="">
+    <p>Your added items will appear here</p>
+  </aside>
 
-  Vanilla Bean Crème Brûlée
-  Crème Brûlée
-  7.00
-  Add to Cart
-
-  Macaron Mix of Five
-  Macaron
-  8.00
-  Add to Cart
-
-  Classic Tiramisu
-  Tiramisu
-  5.50
-  Add to Cart
-
-  Pistachio Baklava
-  Baklava
-  4.00
-  Add to Cart
-
-  Lemon Meringue Pie
-  Pie
-  5.00
-  Add to Cart
-
-  Red Velvet Cake
-  Cake
-  4.50
-  Add to Cart
-
-  Salted Caramel Brownie
-  Brownie
-  4.50
-  Add to Cart
-
-  Vanilla Panna Cotta
-  Panna Cotta
-  6.50
-  Add to Cart
-
-  Your Cart (<!-- Quantity -->)
-  Your added items will appear here
-
-  <div class="attribution">
+  <footer class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
+    Coded by <a href="#">Gabriela Piovesan Plinski</a>.
+  </footer>
 </body>
 </html>

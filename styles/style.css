@@ -1,0 +1,80 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap');
+
+/* Weights: 400, 600, 700 */
+
+:root {
+    --cred: hsl(14, 86%, 42%);
+    --cgreen: hsl(159, 69%, 38%);
+    --rose50: hsl(20, 50%, 98%);
+    --rose100: hsl(13, 31%, 94%);
+    --rose300: hsl(14, 25%, 72%);
+    --rose400: hsl(7, 20%, 60%);
+    --rose500: hsl(12, 20%, 44%);
+    --rose900: hsl(14, 65%, 9%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: "Red Hat Text", sans-serif;
+    background-color: var(--rose100);
+}
+
+body {
+    display: flex;
+    align-content: flex-start;
+    flex-wrap: wrap;
+}
+
+main {
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+main h1 {
+    flex-grow: 1;
+}
+
+div img {
+    width: 200px;
+    border-radius: 8px;
+}
+
+p.price {
+    color: var(--cred);
+    font-weight: 600;
+}
+
+aside {
+    background-color: var(--rose50);
+    width: 300px;
+    height: 300px;
+}
+
+aside h2 {
+    color: var(--cred);
+}
+
+footer {
+    width: 100%;
+    font-size: 0.6em;
+    padding-top: 20px;
+    text-align: center;
+    flex-grow: 1;
+}
+
+footer a {
+    text-decoration: none;
+    color: black;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
