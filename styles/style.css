@@ -23,12 +23,11 @@
 
 html, body {
     font-family: "Red Hat Text", sans-serif;
-    background-color: var(--rose100);
 }
 
 body {
-    margin: 0 auto;
-    width: 60%;
+    width: 100%;
+    background-color: var(--rose100);
 
     display: flex;
     justify-content: center;
@@ -36,8 +35,9 @@ body {
 }
 
 main {
-    width: 70%;
-    padding: 60px 100px;
+    width: 100%;
+    max-width: 900px;
+    padding: 40px 20px;
 
     display: flex;
     flex-wrap: wrap;
@@ -49,15 +49,27 @@ h1.titproduct {
 
 .products {
     padding-top: 20px;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
 
     display: grid;
-    grid-template-columns: auto auto auto;
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(220px, max-content));
+    justify-content: center;
+    gap: 1rem;
+    justify-items: center;
 }
 
-div img {
+.products div {
+    position: relative;
     width: 200px;
+}
+
+.products div img {
+    margin-bottom: 30px;
+    width: 100%;
     border-radius: 8px;
+    display: block;
 }
 
 p.description {
@@ -77,19 +89,29 @@ p.price {
     font-size: 0.8em;
 }
 
-section.products div button {
-    font: normal 600 0.8em "Red Hat Text", sans-serif;
+p.price::before {
+    content: "$";
+}
+
+.products div button {
+    font: normal 600 0.7em "Red Hat Text", sans-serif;
     color: var(--rose900);
     gap: 4px;
     line-height: 1;
     background-color: white;
     border-radius: 20px;
-    border: 1px solid var(--rose400);
-    padding: 10px 20px;
-    display: inline-flex;
+    border: 1px solid var(--rose300);
+    padding: 6px 14px 8px;
+
+    display: flex;
     align-items: center;
     justify-content: center;
-    transition: .2s;
+    position: absolute;
+    bottom: 0;
+    left: 20%;
+    transform: translate(3%, -185%);
+    z-index: 2;
+    transition: .2s ease;
 }
 
 .products div button:hover {
@@ -103,7 +125,7 @@ section.products div button {
     width: 18px;
     height: 18px;
     background: url(../assets/images/icon-add-to-cart.svg) no-repeat center/contain;
-    margin-right: 4px;
+    margin-right: 1px;
     vertical-align: 5px;
 }
 
