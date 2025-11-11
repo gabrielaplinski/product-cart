@@ -1,0 +1,5 @@
+@charset "UTF-8";
+
+.products {
+    grid-template-columns: 1fr;
+}
