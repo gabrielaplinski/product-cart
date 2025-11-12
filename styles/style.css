@@ -27,6 +27,7 @@ html, body {
 
 body {
     width: 100%;
+    height: 100vh;
     background-color: var(--rose100);
 
     display: flex;
@@ -53,13 +54,13 @@ h1.titproduct {
     padding-right: 20px;
     width: 100%;
     max-width: 700px;
-    margin: 0 auto;
 
     display: grid;
     grid-template-columns: repeat(3, max-content);
     justify-content: center;
     gap: 1.5rem;
     justify-items: center;
+    align-items: start;
 }
 
 .products div {
@@ -72,27 +73,6 @@ h1.titproduct {
     width: 100%;
     border-radius: 8px;
     display: block;
-}
-
-p.description {
-    font-size: 0.9em;
-    font-weight: 600;
-}
-
-p.item {
-    color: var(--rose400);
-    font-size: 0.7em;
-    font-weight: 600;
-}
-
-p.price {
-    color: var(--cred);
-    font-weight: 600;
-    font-size: 0.8em;
-}
-
-p.price::before {
-    content: "$";
 }
 
 .products div button {
@@ -131,6 +111,27 @@ p.price::before {
     vertical-align: 5px;
 }
 
+p.description {
+    font-size: 0.8em;
+    font-weight: 600;
+}
+
+p.item {
+    color: var(--rose300);
+    font-size: 0.7em;
+    font-weight: 600;
+}
+
+p.price {
+    color: var(--cred);
+    font-weight: 600;
+    font-size: 0.8em;
+}
+
+p.price::before {
+    content: "$";
+}
+
 aside {
     background-color: var(--rose50);
     width: 280px;
@@ -161,9 +162,16 @@ aside p {
     padding-top: 8px;
 }
 
+#cart-items {
+    list-style-type: none;
+    padding-left: 20px;
+    font-size: .8em;
+}
+
 footer {
     width: 100%;
     font-size: 0.6em;
+    color: var(--rose300);
     padding-top: 20px;
     text-align: center;
     flex-grow: 1;
@@ -171,7 +179,7 @@ footer {
 
 footer a {
     text-decoration: none;
-    color: black;
+    color: var(--rose500);
 }
 
 footer a:hover {
