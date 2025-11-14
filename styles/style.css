@@ -133,11 +133,12 @@ p.price::before {
 }
 
 aside {
+    height: auto;
     background-color: var(--rose50);
     width: 280px;
-    height: 220px;
     border-radius: 8px;
     margin-top: 70px;
+    align-self: flex-start;
 }
 
 aside h2 {
@@ -159,13 +160,27 @@ aside p {
     font-weight: 600;
     font-size: 0.7em;
     text-align: center;
-    padding-top: 8px;
+    padding-bottom: 30px;
 }
 
 #cart-items {
     list-style-type: none;
     padding-left: 20px;
     font-size: .8em;
+}
+
+#cart-item {
+    display: grid;
+    grid-template-columns: 50px 1fr auto auto auto;
+}
+
+.remove-btn {
+    width: 24px;
+    height: 24px;
+    background: url(../assets/images/icon-remove-item.svg) no-repeat center;
+    background-size: contain;
+    border: none;
+    cursor: pointer;
 }
 
 footer {
