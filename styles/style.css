@@ -84,7 +84,9 @@ button.addTo {
     background-color: white;
     border-radius: 20px;
     border: 1px solid var(--rose300);
-    padding: 6px 14px 8px;
+    padding: 6px 13px 8px;
+    width: 70%;
+    height: 34px;
 
     display: flex;
     align-items: center;
@@ -102,7 +104,7 @@ button.addTo::before {
     width: 18px;
     height: 18px;
     background: url(../assets/images/icon-add-to-cart.svg) no-repeat center/contain;
-    margin-right: 1px;
+    margin-right: .8px;
     vertical-align: 5px;
 }
 
@@ -111,16 +113,16 @@ button.addTo:hover {
     border: 1px solid hsl(14, 89%, 34%);
     color: hsl(14, 89%, 34%);
     cursor: pointer;
-    font-weight: normal;
+    font-weight: 600;
 }
 
 .added {
+    pointer-events: none;
     background-color: hsl(14, 89%, 34%) !important;
     color: white !important;
     font-weight: normal !important;
-    width: 65%;
     border: 1px solid hsl(14, 89%, 34%) !important;
-    padding-inline: 6px !important;
+    padding: 6px 7px 8px !important;
 }
 
 .added::before {
@@ -133,9 +135,11 @@ button.addTo:hover {
 }
 
 .qty-controls {
+    height: 100%;
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
+    align-items: center;
 }
 
 .qty-controls span:hover {
@@ -143,11 +147,26 @@ button.addTo:hover {
 }
 
 .minus, .plus {
+    pointer-events: auto;
     width: 15px;
     height: 15px;
     padding: 2px;
     border: 1px solid white;
     border-radius: 50px;
+}
+
+.minus img {
+    padding-top: 4px;
+}
+
+.minus img,
+.plus img {
+    filter: brightness(100) saturate(100%);
+}
+
+.minus:hover img,
+.plus:hover img { 
+    filter: brightness(0) saturate(100%) invert(20%) sepia(90%) saturate(800%) hue-rotate(-10deg);
 }
 
 p.description {
@@ -209,7 +228,10 @@ aside p {
 
 #cart-item {
     display: grid;
-    grid-template-columns: 50px 1fr auto auto auto;
+    grid-template-columns: 50px 1fr auto;
+    align-items: center;
+    column-gap: 10px;
+    padding: 10px 0;
 }
 
 .remove-btn {
@@ -219,6 +241,7 @@ aside p {
     background-size: contain;
     border: none;
     cursor: pointer;
+    justify-self: end;
 }
 
 footer {
