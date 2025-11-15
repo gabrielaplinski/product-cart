@@ -115,7 +115,12 @@ button.addTo:hover {
 }
 
 .added {
-    background-color: var(--cred);
+    background-color: hsl(14, 89%, 34%) !important;
+    color: white !important;
+    font-weight: normal !important;
+    width: 65%;
+    border: 1px solid hsl(14, 89%, 34%) !important;
+    padding-inline: 6px !important;
 }
 
 .added::before {
@@ -127,22 +132,20 @@ button.addTo:hover {
     color: white !important;
 }
 
-.qty-controls span {
-    display: inline-block;
+.qty-controls {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
 }
 
-.minus {
-    background: url(../assets/images/icon-decrement-quantity.svg) no-repeat 2px 5.5px;
-}
-
-.plus {
-    background: url(../assets/images/icon-increment-quantity.svg) no-repeat 2px 5.5px;
+.qty-controls span:hover {
+    background-color: white;
 }
 
 .minus, .plus {
-    background-size: 7.8px;
     width: 15px;
     height: 15px;
+    padding: 2px;
     border: 1px solid white;
     border-radius: 50px;
 }

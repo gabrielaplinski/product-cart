@@ -36,9 +36,9 @@ function updateButtonState(button, id) {
     button.classList.add("added");
     button.textContent = "";
     button.innerHTML = `<div class="qty-controls">
-                        <span class="minus" role="button" tabindex="0"></span>
+                        <span class="minus" role="button" tabindex="0"><img src="../assets/images/icon-decrement-quantity.svg"></span>
                         <span class="qty">${item.quantity}</span>
-                        <span class="plus" role="button" tabindex="0"></span>
+                        <span class="plus" role="button" tabindex="0"><img src="../assets/images/icon-increment-quantity.svg"></span>
                         </div>`;
     const minusButton = button.querySelector(".minus");
     const plusButton = button.querySelector(".plus");
