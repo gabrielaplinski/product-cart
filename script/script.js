@@ -17,9 +17,65 @@ document.querySelectorAll(".addTo").forEach(button => {
             cart.push({ id, name, price, quantity: 1});
         }
 
+        updateButtonState(button, id);
+
+
         updateCart();
     });
 });
+
+function updateButtonState(button, id) {
+    const item = cart.find(i => i.id === id);
+
+    if(!item) {
+        button.innerHTML = `<span class="icon-add"></span> Add to Cart`;
+        button.classList.remove("added");
+        return
+    }
+
+    button.classList.add("added");
+    button.textContent = "";
+    button.innerHTML = `<div class="qty-controls">
+                        <span class="minus" role="button" tabindex="0"></span>
+                        <span class="qty">${item.quantity}</span>
+                        <span class="plus" role="button" tabindex="0"></span>
+                        </div>`;
+    const minusButton = button.querySelector(".minus");
+    const plusButton = button.querySelector(".plus");
+
+    minusButton.addEventListener("click", (e) => {
+        e.stopPropagation();
+        item.quantity--;
+
+        if (item.quantity <= 0) {
+            removeItem(id);
+            updateButtonState(button, id);
+        } else {
+            updateCart();
+            updateButtonState(button, id);
+        }
+    });
+
+    plusButton.addEventListener("click", (e) => {
+        e.stopPropagation();
+        item.quantity++;
+        updateCart();
+        updateButtonState(button, id);
+    });
+
+    minusButton.addEventListener("keydown", (e) => {
+        if(e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            minusButton.click();
+        }
+    });
+    plusButton.addEventListener("keydown", (e) => {
+        if(e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            plusButton.click();
+        }
+    });
+}
 
 function updateCart() {
     cartList.innerHTML = "";
@@ -60,10 +116,10 @@ function updateCart() {
         cartList.appendChild(li);
     });
     
+    emptyCart.style.display = cart.length > 0 ? "none" : "block"
     cartTotal.textContent = `Order Total $${total.toFixed(2)}`;
     cartQuantity.textContent = totalItems;
-
-    emptyCart.style.display = cart.length > 0 ? "none" : "block";
+    cartTotal.style.display = cart.length > 0 ? "block" : "none";
 }
 
 function removeItem(id) {
@@ -71,5 +127,14 @@ function removeItem(id) {
     if (index !== -1) {
         cart.splice(index, 1);
         updateCart();
+        resetButton(id);
     }
+}
+
+function resetButton(id) {
+    const button = document.querySelector(`button.addTo[data-id="${id}"]`);
+    if (!button) return;
+
+    button.classList.remove("added");
+    button.innerHTML = `Add to Cart`;
 }

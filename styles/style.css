@@ -54,6 +54,7 @@ h1.titproduct {
     padding-right: 20px;
     width: 100%;
     max-width: 700px;
+    height: 80vh;
 
     display: grid;
     grid-template-columns: repeat(3, max-content);
@@ -75,7 +76,7 @@ h1.titproduct {
     display: block;
 }
 
-.products div button {
+button.addTo {
     font: normal 600 0.7em "Red Hat Text", sans-serif;
     color: var(--rose900);
     gap: 4px;
@@ -96,19 +97,54 @@ h1.titproduct {
     transition: .2s ease;
 }
 
-.products div button:hover {
-    background-color: var(--rose900);
-    color: var(--rose50);
-    cursor: pointer;
-}
-
-.products div button::before {
+button.addTo::before {
     content: "";
     width: 18px;
     height: 18px;
     background: url(../assets/images/icon-add-to-cart.svg) no-repeat center/contain;
     margin-right: 1px;
     vertical-align: 5px;
+}
+
+button.addTo:hover {
+    background-color: var(--rose50);
+    border: 1px solid hsl(14, 89%, 34%);
+    color: hsl(14, 89%, 34%);
+    cursor: pointer;
+    font-weight: normal;
+}
+
+.added {
+    background-color: var(--cred);
+}
+
+.added::before {
+    display: none;
+}
+
+.added:hover {
+    background-color: hsl(14, 89%, 34%) !important;
+    color: white !important;
+}
+
+.qty-controls span {
+    display: inline-block;
+}
+
+.minus {
+    background: url(../assets/images/icon-decrement-quantity.svg) no-repeat 2px 5.5px;
+}
+
+.plus {
+    background: url(../assets/images/icon-increment-quantity.svg) no-repeat 2px 5.5px;
+}
+
+.minus, .plus {
+    background-size: 7.8px;
+    width: 15px;
+    height: 15px;
+    border: 1px solid white;
+    border-radius: 50px;
 }
 
 p.description {
@@ -148,11 +184,10 @@ aside h2 {
 }
 
 aside img {
+    display: block;
+    margin: auto;
     width: 100px;
-    position: relative;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    top: 25%;
+    text-align: center;
 }
 
 aside p {
