@@ -224,14 +224,50 @@ aside p {
     list-style-type: none;
     padding-left: 20px;
     font-size: .8em;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-#cart-item {
+.cart-item {
     display: grid;
-    grid-template-columns: 50px 1fr auto;
+    grid-template-columns: 3fr 1fr;
+    justify-content: space-between;
+}
+
+#cart-total {
+    width: 100%;
+    padding: 15px 20px;
+
+    justify-content: space-between;
     align-items: center;
-    column-gap: 10px;
-    padding: 10px 0;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+#cart-total span.tot-value {
+    font-size: 2em;
+    font-weight: 600;
+    color: black;
+}
+
+#cart-total span.obs-carbon {
+    background-color: var(--rose100);
+    padding: 20px;
+    flex-grow: 1;
+    border-radius: 7px;
+    color: rgb(83, 83, 83);
+}
+
+span.obs-carbon::before {
+    content: "";
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+    background: url(../assets/images/icon-carbon-neutral.svg) no-repeat center;
+    background-size: contain;
 }
 
 .remove-btn {

@@ -117,9 +117,11 @@ function updateCart() {
     });
     
     emptyCart.style.display = cart.length > 0 ? "none" : "block"
-    cartTotal.textContent = `Order Total $${total.toFixed(2)}`;
+    cartTotal.innerHTML = `<span class="label">Order Total</span>
+                        <span class="tot-value">$${total.toFixed(2)}</span>
+                        <span class="obs-carbon">This is a <strong>carbon-neutral</strong> delivery</span>`;
     cartQuantity.textContent = totalItems;
-    cartTotal.style.display = cart.length > 0 ? "block" : "none";
+    cartTotal.style.display = cart.length > 0 ? "flex" : "none";
 }
 
 function removeItem(id) {
