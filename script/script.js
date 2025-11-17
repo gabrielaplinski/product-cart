@@ -19,7 +19,6 @@ document.querySelectorAll(".addTo").forEach(button => {
 
         updateButtonState(button, id);
 
-
         updateCart();
     });
 });
@@ -27,13 +26,24 @@ document.querySelectorAll(".addTo").forEach(button => {
 function updateButtonState(button, id) {
     const item = cart.find(i => i.id === id);
 
+    const productImage = document.querySelector(`img[data-id="${id}"]`);
+
     if(!item) {
         button.innerHTML = `<span class="icon-add"></span> Add to Cart`;
         button.classList.remove("added");
+        
+
+        if (productImage) productImage.classList.remove("in-cart");
+
         return
     }
 
     button.classList.add("added");
+
+    if (productImage) {
+        productImage.classList.add("in-cart");
+    }
+
     button.textContent = "";
     button.innerHTML = `<div class="qty-controls">
                         <span class="minus" role="button" tabindex="0"><img src="../assets/images/icon-decrement-quantity.svg" alt=""></span>
@@ -93,12 +103,16 @@ function updateCart() {
         name.classList.add("cart-name");
         name.textContent = item.name;
 
-        const details = document.createElement("p");
-        details.classList.add("cart-details");
-        details.textContent = `${item.quantity}x @$${item.price.toFixed(2)}`;
+        const quantityCart = document.createElement("p");
+        quantityCart.classList.add("item-quantity");
+        quantityCart.textContent = `${item.quantity}x`;
+
+        const itemPrice = document.createElement("p");
+        itemPrice.classList.add("item-price");
+        itemPrice.textContent = `@$${item.price.toFixed(2)}`;
 
         const itemTotal = document.createElement("p");
-        itemTotal.classList.add("cart-total");
+        itemTotal.classList.add("item-total");
         itemTotal.textContent = `$${(item.price * item.quantity).toFixed(2)}`;
 
         const removeBtn = document.createElement("button");
@@ -109,7 +123,8 @@ function updateCart() {
         });
         
         li.appendChild(name);
-        li.appendChild(details);
+        li.appendChild(quantityCart);
+        li.appendChild(itemPrice);
         li.appendChild(itemTotal);
         li.appendChild(removeBtn);
 
@@ -119,7 +134,8 @@ function updateCart() {
     emptyCart.style.display = cart.length > 0 ? "none" : "block"
     cartTotal.innerHTML = `<span class="label">Order Total</span>
                         <span class="tot-value">$${total.toFixed(2)}</span>
-                        <span class="obs-carbon">This is a <strong>carbon-neutral</strong> delivery</span>`;
+                        <span class="obs-carbon">This is a <strong>carbon-neutral</strong> delivery</span> 
+                        <button>Confirm Order</button>`;
     cartQuantity.textContent = totalItems;
     cartTotal.style.display = cart.length > 0 ? "flex" : "none";
 }
@@ -139,4 +155,9 @@ function resetButton(id) {
 
     button.classList.remove("added");
     button.innerHTML = `Add to Cart`;
+
+    const productImage = document.querySelector(`img[data-id="${id}"]`);
+    if (productImage) {
+        productImage.classList.remove("in-cart");
+    }
 }

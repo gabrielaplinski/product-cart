@@ -212,7 +212,7 @@ aside img {
     text-align: center;
 }
 
-aside p {
+aside p.msg-empty {
     color: var(--rose500);
     font-weight: 600;
     font-size: 0.7em;
@@ -222,23 +222,67 @@ aside p {
 
 #cart-items {
     list-style-type: none;
-    padding-left: 20px;
-    font-size: .8em;
-
+    padding-left: 0 20px;
+    font-size: .8em; 
+    
     display: flex;
-    flex-direction: column;
-    gap: 10px;
+    flex-wrap: wrap;
 }
 
 .cart-item {
+    border-bottom: 1px solid var(--rose100);
+    padding: 10px 20px;
+    gap: 10px;
+
     display: grid;
-    grid-template-columns: 3fr 1fr;
-    justify-content: space-between;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: "area1 . . ."
+                        "area2 area3 area4 area5";
+}
+
+.cart-name {
+    font-weight: 600;
+    grid-area: area1;
+}
+
+.item-quantity {
+    color: var(--cred);
+    font-weight: 600;
+    grid-area: area2
+}
+
+.item-price {
+    color: var(--rose400);
+    grid-area: area3;
+}
+
+.item-total {
+    color: var(--rose400);
+    font-weight: 600;
+    grid-area: area4;
+}
+
+.remove-btn {
+    width: 24px;
+    height: 24px;
+    background: url(../assets/images/icon-remove-item.svg) no-repeat center;
+    background-size: contain;
+    border: none;
+    cursor: pointer;
+    justify-self: end;
+    grid-area: area5;
+}
+
+.in-cart {
+    border: 2px solid hsl(14, 89%, 34%);
 }
 
 #cart-total {
     width: 100%;
     padding: 15px 20px;
+    font-size: .7em;
+    color: rgb(32, 32, 32);
+    font-weight: 500;
 
     justify-content: space-between;
     align-items: center;
@@ -247,9 +291,9 @@ aside p {
 }
 
 #cart-total span.tot-value {
-    font-size: 2em;
-    font-weight: 600;
-    color: black;
+    font-size: 1.8em;
+    font-weight: 700;
+    color: rgb(32, 32, 32);
 }
 
 #cart-total span.obs-carbon {
@@ -268,16 +312,6 @@ span.obs-carbon::before {
     margin-right: 5px;
     background: url(../assets/images/icon-carbon-neutral.svg) no-repeat center;
     background-size: contain;
-}
-
-.remove-btn {
-    width: 24px;
-    height: 24px;
-    background: url(../assets/images/icon-remove-item.svg) no-repeat center;
-    background-size: contain;
-    border: none;
-    cursor: pointer;
-    justify-self: end;
 }
 
 footer {
