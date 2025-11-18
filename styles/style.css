@@ -37,7 +37,7 @@ body {
 
 main {
     width: 100%;
-    max-width: 700px;
+    max-width: 600px;
     padding: 40px 10px;
 
     display: flex;
@@ -51,7 +51,6 @@ h1.titproduct {
 
 .products {
     padding-top: 20px;
-    padding-right: 20px;
     width: 100%;
     max-width: 700px;
     height: 80vh;
@@ -74,6 +73,11 @@ h1.titproduct {
     width: 100%;
     border-radius: 8px;
     display: block;
+}
+
+.in-cart {
+    outline: 2px solid var(--cred); 
+    outline-offset: -2px;
 }
 
 button.addTo {
@@ -110,7 +114,7 @@ button.addTo::before {
 
 button.addTo:hover {
     background-color: var(--rose50);
-    border: 1px solid hsl(14, 89%, 34%);
+    border: 1px solid var(--cred);
     color: hsl(14, 89%, 34%);
     cursor: pointer;
     font-weight: 600;
@@ -118,10 +122,10 @@ button.addTo:hover {
 
 .added {
     pointer-events: none;
-    background-color: hsl(14, 89%, 34%) !important;
+    background-color: var(--cred) !important;
     color: white !important;
     font-weight: normal !important;
-    border: 1px solid hsl(14, 89%, 34%) !important;
+    border: 1px solid var(--cred) !important;
     padding: 6px 7px 8px !important;
 }
 
@@ -130,7 +134,7 @@ button.addTo:hover {
 }
 
 .added:hover {
-    background-color: hsl(14, 89%, 34%) !important;
+    background-color: var(--cred) !important;
     color: white !important;
 }
 
@@ -241,6 +245,7 @@ aside p.msg-empty {
 }
 
 .cart-name {
+    font-size: .8em;
     font-weight: 600;
     grid-area: area1;
 }
@@ -263,18 +268,15 @@ aside p.msg-empty {
 }
 
 .remove-btn {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     background: url(../assets/images/icon-remove-item.svg) no-repeat center;
-    background-size: contain;
-    border: none;
+    border: 1px solid var(--rose300);
+    border-radius: 50%;
     cursor: pointer;
+
     justify-self: end;
     grid-area: area5;
-}
-
-.in-cart {
-    border: 2px solid hsl(14, 89%, 34%);
 }
 
 #cart-total {
@@ -312,6 +314,43 @@ span.obs-carbon::before {
     margin-right: 5px;
     background: url(../assets/images/icon-carbon-neutral.svg) no-repeat center;
     background-size: contain;
+}
+
+#overlay {
+    position: fixed;
+    background: white;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    border-radius: 10px;
+}
+
+#modal {
+    background-color: #ffffff;
+    padding: 20px 30px;
+    max-width: 420px;
+    border-radius: 10px;
+    text-align: left;
+    box-shadow: 0 0 100vw rgba(0, 0, 0, 0.986);
+}
+
+#modal-cart-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+#modal-cart-list li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+#modal-total {
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: right;
 }
 
 footer {

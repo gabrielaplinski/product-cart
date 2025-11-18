@@ -2,7 +2,9 @@ const cart = [];
 const cartList = document.querySelector("#cart-items");
 const cartTotal = document.querySelector("#cart-total");
 const emptyCart = document.querySelector("#empty-cart");
-const cartQuantity = document.querySelector("#cart-quantity")
+const cartQuantity = document.querySelector("#cart-quantity");
+const modalOverlay = document.querySelector("#overlay");
+const modalCartList = document.querySelector("#modal-cart-list")
 
 document.querySelectorAll(".addTo").forEach(button => {
     button.addEventListener("click", () => {
@@ -20,6 +22,7 @@ document.querySelectorAll(".addTo").forEach(button => {
         updateButtonState(button, id);
 
         updateCart();
+        saveCart();
     });
 });
 
@@ -63,6 +66,7 @@ function updateButtonState(button, id) {
         } else {
             updateCart();
             updateButtonState(button, id);
+            saveCart();
         }
     });
 
@@ -71,6 +75,7 @@ function updateButtonState(button, id) {
         item.quantity++;
         updateCart();
         updateButtonState(button, id);
+        saveCart();
     });
 
     minusButton.addEventListener("keydown", (e) => {
@@ -84,6 +89,20 @@ function updateButtonState(button, id) {
             e.preventDefault();
             plusButton.click();
         }
+    });
+}
+
+function attachConfirmButton() {
+    const confirmButton = document.querySelector("#confirm");
+    if (!confirmButton) return;
+
+    confirmButton.addEventListener("click", () => {
+        if (cart.length === 0) return;
+
+        const cartListHTML = cartList.innerHTML;
+        modalCartList.innerHTML = cartListHTML;
+
+        modalOverlay.style.display = "flex";
     });
 }
 
@@ -134,11 +153,35 @@ function updateCart() {
     emptyCart.style.display = cart.length > 0 ? "none" : "block"
     cartTotal.innerHTML = `<span class="label">Order Total</span>
                         <span class="tot-value">$${total.toFixed(2)}</span>
-                        <span class="obs-carbon">This is a <strong>carbon-neutral</strong> delivery</span> 
-                        <button>Confirm Order</button>`;
+                        <span class="obs-carbon">This is a <strong>carbon-neutral</strong> delivery</span>
+                        <button id="confirm">Confirm Order</button>`;
     cartQuantity.textContent = totalItems;
     cartTotal.style.display = cart.length > 0 ? "flex" : "none";
+
+    attachConfirmButton();
 }
+
+function saveCart() {
+    try {
+        localStorage.setItem("cart", JSON.stringify(cart));
+    } catch (err) {
+        console.error("Error saving cart in localStorage:", err);
+    }
+}
+
+function loadCart() {
+    const saved = localStorage.getItem("cart");
+    if (saved) {
+        cart.splice(0, cart.length, ...JSON.parse(saved));
+        updateCart();
+
+        cart.forEach(item => {
+            const button = document.querySelector(`button.addTo[data-id="${item.id}"]`);
+            if (button) updateButtonState(button, item.id);
+        });
+    }
+}
+loadCart();
 
 function removeItem(id) {
     const index = cart.findIndex(item => item.id === id);
@@ -146,6 +189,7 @@ function removeItem(id) {
         cart.splice(index, 1);
         updateCart();
         resetButton(id);
+        saveCart();
     }
 }
 
