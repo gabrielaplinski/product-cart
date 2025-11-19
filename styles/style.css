@@ -6,6 +6,7 @@
 
 :root {
     --cred: hsl(14, 86%, 42%);
+    --cred100: hsl(14, 85%, 32%);
     --cgreen: hsl(159, 69%, 38%);
     --rose50: hsl(20, 50%, 98%);
     --rose100: hsl(13, 31%, 94%);
@@ -13,6 +14,7 @@
     --rose400: hsl(7, 20%, 60%);
     --rose500: hsl(12, 20%, 44%);
     --rose900: hsl(14, 65%, 9%);
+    --totfont: "Red Hat Text", sans-serif;
 }
 
 * {
@@ -22,7 +24,7 @@
 }
 
 html, body {
-    font-family: "Red Hat Text", sans-serif;
+    font-family: var(--totfont);
 }
 
 body {
@@ -85,7 +87,7 @@ button.addTo {
     color: var(--rose900);
     gap: 4px;
     line-height: 1;
-    background-color: white;
+    background-color: #ffffff;
     border-radius: 20px;
     border: 1px solid var(--rose300);
     padding: 6px 13px 8px;
@@ -115,7 +117,7 @@ button.addTo::before {
 button.addTo:hover {
     background-color: var(--rose50);
     border: 1px solid var(--cred);
-    color: hsl(14, 89%, 34%);
+    color: var(--cred100);
     cursor: pointer;
     font-weight: 600;
 }
@@ -147,7 +149,7 @@ button.addTo:hover {
 }
 
 .qty-controls span:hover {
-    background-color: white;
+    background-color: #ffffff;
 }
 
 .minus, .plus {
@@ -155,7 +157,7 @@ button.addTo:hover {
     width: 15px;
     height: 15px;
     padding: 2px;
-    border: 1px solid white;
+    border: 1px solid #ffffff;
     border-radius: 50px;
 }
 
@@ -233,7 +235,7 @@ aside p.msg-empty {
     flex-wrap: wrap;
 }
 
-.cart-item {
+#cart-items .cart-item {
     border-bottom: 1px solid var(--rose100);
     padding: 10px 20px;
     gap: 10px;
@@ -244,24 +246,25 @@ aside p.msg-empty {
                         "area2 area3 area4 area5";
 }
 
-.cart-name {
+#cart-items .cart-name {
     font-size: .8em;
     font-weight: 600;
     grid-area: area1;
 }
 
-.item-quantity {
+#cart-items .item-quantity {
+    font-size: .7em;
     color: var(--cred);
     font-weight: 600;
     grid-area: area2
 }
 
-.item-price {
+#cart-items .item-price {
     color: var(--rose400);
     grid-area: area3;
 }
 
-.item-total {
+#cart-items .item-total {
     color: var(--rose400);
     font-weight: 600;
     grid-area: area4;
@@ -283,7 +286,7 @@ aside p.msg-empty {
     width: 100%;
     padding: 15px 20px;
     font-size: .7em;
-    color: rgb(32, 32, 32);
+    color: var(--rose900);
     font-weight: 500;
 
     justify-content: space-between;
@@ -295,7 +298,7 @@ aside p.msg-empty {
 #cart-total span.tot-value {
     font-size: 1.8em;
     font-weight: 700;
-    color: rgb(32, 32, 32);
+    color: var(--rose900);
 }
 
 #cart-total span.obs-carbon {
@@ -303,7 +306,7 @@ aside p.msg-empty {
     padding: 20px;
     flex-grow: 1;
     border-radius: 7px;
-    color: rgb(83, 83, 83);
+    color: #000000;
 }
 
 span.obs-carbon::before {
@@ -316,9 +319,29 @@ span.obs-carbon::before {
     background-size: contain;
 }
 
+.buttons {
+    background-color: var(--cred);
+    color: #ffffff;
+    font-family: var(--totfont);
+    font-weight: 500;
+    border: none;
+    border-radius: 30px;
+    width: 100%;
+    padding: 10px;
+}
+
+.buttons:hover {
+    background-color: var(--cred100);
+    cursor: pointer;
+}
+
 #overlay {
     position: fixed;
-    background: white;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.575);
     display: none;
     justify-content: center;
     align-items: center;
@@ -329,28 +352,102 @@ span.obs-carbon::before {
 #modal {
     background-color: #ffffff;
     padding: 20px 30px;
-    max-width: 420px;
+    width: clamp(400px, 22vw, 700px);
     border-radius: 10px;
     text-align: left;
-    box-shadow: 0 0 100vw rgba(0, 0, 0, 0.986);
+}
+
+#modal h2 {
+    font-size: 1.7em;
+    font-weight: 800;
+}
+
+#cart-list {
+    background-color: var(--rose50);
+    border-radius: 5px;
 }
 
 #modal-cart-list {
     list-style: none;
     padding: 0;
     margin: 20px 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 #modal-cart-list li {
-    display: flex;
-    justify-content: space-between;
     margin-bottom: 10px;
+    padding: 10px;
+    border-bottom: 1px solid var(--rose100);
+
+    display: flex;
+    justify-content: flex-start;
+    gap: 12px;
+    align-items: center;
+}
+
+.item-cart-confirm {
+    gap: 5px;
+    width: 100%;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.item-cart-confirm .cart-name {
+    color: var(--rose900);
+    font-size: .8em;
+    font-weight: 600;
+    width: 100%;
+}
+
+.item-cart-confirm .item-quantity {
+    color: var(--cred);
+    font-size: .8em;   
+    font-weight: 600;
+    padding-right: 10px; 
+}
+
+.item-cart-confirm .item-price {
+    color: var(--rose300);
+    font-size: .8em;
+}
+
+#modal-cart-list li .item-total {
+    color: var(--rose900);
+    font-weight: 600;
+    font-size: .9em;
+}
+
+#modal-cart-list img {
+    width: 50px;
+    border-radius: 4px;
+    grid-area: area1;
 }
 
 #modal-total {
-    font-weight: bold;
     margin-bottom: 20px;
-    text-align: right;
+    padding: 10px;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+#modal-total .label {
+    font-size: .7em;
+    color: var(--rose900);
+    font-weight: 500;
+}
+
+#modal-total .tot-value {
+    font-size: 1.3em;
+    font-weight: 700;
+    color: var(--rose900);
 }
 
 footer {

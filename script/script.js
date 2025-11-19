@@ -4,7 +4,8 @@ const cartTotal = document.querySelector("#cart-total");
 const emptyCart = document.querySelector("#empty-cart");
 const cartQuantity = document.querySelector("#cart-quantity");
 const modalOverlay = document.querySelector("#overlay");
-const modalCartList = document.querySelector("#modal-cart-list")
+const modalCartList = document.querySelector("#modal-cart-list");
+const modalTotal = document.querySelector("#modal-total");
 
 document.querySelectorAll(".addTo").forEach(button => {
     button.addEventListener("click", () => {
@@ -99,8 +100,26 @@ function attachConfirmButton() {
     confirmButton.addEventListener("click", () => {
         if (cart.length === 0) return;
 
-        const cartListHTML = cartList.innerHTML;
-        modalCartList.innerHTML = cartListHTML;
+        modalCartList.innerHTML = "";
+
+        let total = 0;
+
+        cart.forEach(item => {
+            const thumbSrc = `../assets/images/thumbnails/${item.id}.jpg`;
+            const li = document.createElement("li");
+            li.innerHTML = `<img src="${thumbSrc}" class="modal-img">
+                            <div class="item-cart-confirm">
+                                <span class="cart-name">${item.name}</span>
+                                <span class="item-quantity">${item.quantity}x</span>
+                                <span class="item-price">@$${item.price.toFixed(2)}</span>
+                            </div>
+                            <span class="item-total">$${(item.price * item.quantity).toFixed(2)}</span>`
+            modalCartList.appendChild(li);
+
+            total += item.price * item.quantity;
+        });
+        modalTotal.innerHTML = `<span class="label">Order Total</span> 
+                                <span class="tot-value">$${total.toFixed(2)}</span>`;
 
         modalOverlay.style.display = "flex";
     });
@@ -154,7 +173,7 @@ function updateCart() {
     cartTotal.innerHTML = `<span class="label">Order Total</span>
                         <span class="tot-value">$${total.toFixed(2)}</span>
                         <span class="obs-carbon">This is a <strong>carbon-neutral</strong> delivery</span>
-                        <button id="confirm">Confirm Order</button>`;
+                        <button id="confirm" class="buttons">Confirm Order</button>`;
     cartQuantity.textContent = totalItems;
     cartTotal.style.display = cart.length > 0 ? "flex" : "none";
 
@@ -205,3 +224,5 @@ function resetButton(id) {
         productImage.classList.remove("in-cart");
     }
 }
+
+document.getElementById
