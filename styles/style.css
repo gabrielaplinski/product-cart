@@ -62,8 +62,9 @@ h1.titproduct {
     grid-template-columns: repeat(3, max-content);
     justify-content: center;
     gap: 1.1rem;
-    justify-items: center;
-    align-items: start;
+    justify-items: flex-start;
+    align-items: flex-start;
+    align-content: center;
 }
 
 .products div {
@@ -231,58 +232,65 @@ aside p.msg-empty {
 
 #cart-items {
     list-style-type: none;
-    padding-left: 0 20px;
     font-size: .8em; 
-    
-    display: flex;
-    flex-wrap: wrap;
+    width: 100%;
 }
 
 #cart-items .cart-item {
-    border-bottom: 1px solid var(--rose100);
-    padding: 10px 20px;
-    gap: 10px;
+    width: 100%;
+    padding: 5px 15px;
 
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-areas: "area1 . . ."
-                        "area2 area3 area4 area5";
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
 }
 
-#cart-items .cart-name {
+#cart-items .cart-item::after {
+    content: "";
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    bottom: 0;
+    height: 1px;
+    background: violet;
+}
+
+.cart-item .item-data {
+    width: 90%;
+}
+
+.cart-item .button-cart {
+
+    align-self: center;
+}
+
+.cart-item .cart-name {
     font-size: .8em;
     font-weight: 600;
-    grid-area: area1;
 }
 
-#cart-items .item-quantity {
+.cart-item .item-quantity {
     font-size: .7em;
     color: var(--cred);
     font-weight: 600;
-    grid-area: area2
 }
 
-#cart-items .item-price {
+.cart-item .item-price {
     color: var(--rose400);
-    grid-area: area3;
 }
 
-#cart-items .item-total {
+.cart-item .item-total {
     color: var(--rose400);
     font-weight: 600;
-    grid-area: area4;
 }
 
 .remove-btn {
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     background: url(../assets/images/icon-remove-item.svg) no-repeat center;
     border: 1px solid var(--rose300);
     border-radius: 50%;
     cursor: pointer;
-
-    justify-self: end;
-    grid-area: area5;
 }
 
 #cart-total {

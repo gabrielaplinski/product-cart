@@ -127,6 +127,7 @@ function attachConfirmButton() {
 
 function updateCart() {
     cartList.innerHTML = "";
+
     let total = 0;
     let totalItems = 0;
 
@@ -136,6 +137,11 @@ function updateCart() {
 
         const li = document.createElement("li");
         li.classList.add("cart-item");
+
+        const dataItem = document.createElement("div");
+        dataItem.classList.add("item-data");
+        const btnCart = document.createElement("div");
+        btnCart.classList.add("button-cart");
 
         const name = document.createElement("p");
         name.classList.add("cart-name");
@@ -160,11 +166,14 @@ function updateCart() {
             removeItem(item.id);
         });
         
-        li.appendChild(name);
-        li.appendChild(quantityCart);
-        li.appendChild(itemPrice);
-        li.appendChild(itemTotal);
-        li.appendChild(removeBtn);
+        dataItem.appendChild(name);
+        dataItem.appendChild(quantityCart);
+        dataItem.appendChild(itemPrice);
+        dataItem.appendChild(itemTotal);
+        btnCart.appendChild(removeBtn);
+
+        li.appendChild(dataItem);
+        li.appendChild(btnCart);
 
         cartList.appendChild(li);
     });
