@@ -36,46 +36,41 @@ body {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    
 }
 
 main {
-    width: 100%;
-    max-width: 600px;
-    padding: 40px 10px;
-
-    display: flex;
-    flex-wrap: wrap;
+    width: 600px;
+    padding: 60px 20px 0;
 }
 
 h1.titproduct {
+    display: block;
+    font-size: 1.8rem;
     width: 100%;
-    text-indent: 10px;
+    padding-bottom: 15px;
 }
 
 .products {
     padding-top: 10px;
-    width: 100%;
-    max-width: 700px;
-    height: 80vh;
 
     display: grid;
-    grid-template-columns: repeat(3, max-content);
+    grid-template-columns: repeat(3, 1fr);
     justify-content: center;
-    gap: 1.1rem;
-    justify-items: flex-start;
-    align-items: flex-start;
-    align-content: center;
+    gap: 1.1rem 17px;
+    justify-items: stretch;
+    align-items: start;
+    align-content: start;
 }
 
 .products div {
     position: relative;
-    width: 169px;
-    padding-bottom: 3px;
+    padding-bottom: 6px;
     line-height: 18px;
 }
 
 .products div img {
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     width: 100%;
     border-radius: 8px;
     display: block;
@@ -118,7 +113,7 @@ button.addTo::before {
 }
 
 button.addTo:hover {
-    background-color: var(--rose50);
+    background-color: #ffffff;
     border: 1px solid var(--cred);
     color: var(--cred100);
     cursor: pointer;
@@ -150,6 +145,7 @@ button.addTo:hover {
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
+    column-gap: 40px;
 }
 
 .qty-controls span:hover {
@@ -203,16 +199,16 @@ p.price::before {
 aside {
     height: auto;
     background-color: #ffffff;
-    width: 250px;
+    width: 270px;
     border-radius: 8px;
-    margin-top: 55px;
+    margin-top: 60px;
     align-self: flex-start;
 }
 
 aside h2 {
-    font-size: 1.1em;
+    font-size: 1.1rem;
     color: var(--cred);
-    padding: 15px 20px;
+    padding: 20px 20px 4px;
 }
 
 aside img {
@@ -239,6 +235,7 @@ aside p.msg-empty {
 #cart-items .cart-item {
     width: 100%;
     padding: 5px 15px;
+    position: relative;
 
     display: flex;
     align-content: center;
@@ -252,51 +249,78 @@ aside p.msg-empty {
     right: 15px;
     bottom: 0;
     height: 1px;
-    background: violet;
+    background: var(--rose50);
 }
 
 .cart-item .item-data {
     width: 90%;
+    padding: 8px;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5%;
 }
 
 .cart-item .button-cart {
+    width: 10%;
 
     align-self: center;
 }
 
 .cart-item .cart-name {
+    width: 100%;
     font-size: .8em;
     font-weight: 600;
+    padding-bottom: 7px;
+
+    flex-grow: 1;
 }
 
 .cart-item .item-quantity {
-    font-size: .7em;
+    font-size: .8em;
     color: var(--cred);
     font-weight: 600;
+
+    align-self: center;
 }
 
 .cart-item .item-price {
+    font-size: .8em;
     color: var(--rose400);
 }
 
 .cart-item .item-total {
+    font-size: .8em;
     color: var(--rose400);
     font-weight: 600;
 }
 
 .remove-btn {
-    width: 15px;
-    height: 15px;
+    width: 12px;
+    height: 12px;
     background: url(../assets/images/icon-remove-item.svg) no-repeat center;
+    background-size: 80%;
     border: 1px solid var(--rose300);
     border-radius: 50%;
     cursor: pointer;
+    margin-left: 10px;
+}
+
+.remove-btn:hover {
+    border: 1px solid var(--rose900);
+    filter: brightness(0) 
+            saturate(100%) 
+            invert(8%)
+            sepia(95%)
+            saturate(900%)
+            hue-rotate(-8deg)
+            brightness(50%);
 }
 
 #cart-total {
     width: 100%;
-    padding: 15px 20px;
-    font-size: .7em;
+    padding: 15px;
+    font-size: .68em;
     color: var(--rose900);
     font-weight: 500;
 
@@ -307,17 +331,19 @@ aside p.msg-empty {
 }
 
 #cart-total span.tot-value {
-    font-size: 1.8em;
+    font-size: 1.5em;
     font-weight: 700;
     color: var(--rose900);
 }
 
 #cart-total span.obs-carbon {
-    background-color: var(--rose100);
-    padding: 20px;
+    background-color: var(--rose50);
+    text-align: center;
+    font-size: .6rem;
+    padding: 10px 0 12px;
     flex-grow: 1;
     border-radius: 7px;
-    color: #000000;
+    color: var(--rose900);
 }
 
 span.obs-carbon::before {
@@ -335,10 +361,12 @@ span.obs-carbon::before {
     color: #ffffff;
     font-family: var(--totfont);
     font-weight: 500;
+    font-size: .7rem;
     border: none;
     border-radius: 30px;
     width: 100%;
-    padding: 10px;
+    padding: 12px;
+    transition: .2s ease;
 }
 
 .buttons:hover {
@@ -463,10 +491,12 @@ span.obs-carbon::before {
 
 footer {
     width: 100%;
-    font-size: 0.6em;
+    font-size: clamp(11px, 0.6rem, 20px);
     color: var(--rose300);
-    padding-top: 20px;
+    padding-top: 10px;
+    margin-top: auto;
     text-align: center;
+
     flex-grow: 1;
 }
 
