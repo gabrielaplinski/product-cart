@@ -1,5 +1,50 @@
 @charset "UTF-8";
 
+main {
+    padding-top: 20px;
+    padding-left: 25px;
+}
+
+h1.titproduct {
+    font-size: 40px;
+}
+
 .products {
     grid-template-columns: 1fr;
+}
+
+.products .item-product {
+    line-height: 25px;
+}
+
+button.addTo {
+    width: 50%;
+    height: 40px;
+    font-size: clamp(0.3rem, 1.7vw + 0.3rem, 15px);
+
+    bottom: 4%;
+    left: 24%;
+}
+
+button.addTo::before {
+    width: 20px;
+    height: 20px;
+}
+
+p.description {
+    font-size: 1em;
+}
+
+p.item {
+    font-size: .9em;
+}
+
+p.price {
+    font-size: .9em;
+}
+
+#modal {
+    height: 100%;
+    width: 100%;
+    margin-top: 180px;
 }

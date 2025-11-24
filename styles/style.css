@@ -63,13 +63,13 @@ h1.titproduct {
     align-content: start;
 }
 
-.products div {
+.products .item-product {
     position: relative;
     padding-bottom: 6px;
     line-height: 18px;
 }
 
-.products div img {
+.products .product-img {
     margin-bottom: 25px;
     width: 100%;
     border-radius: 8px;
@@ -126,7 +126,6 @@ button.addTo:hover {
     color: white !important;
     font-weight: normal !important;
     border: 1px solid var(--cred) !important;
-    padding: 6px 7px 3px !important;
 }
 
 .added::before {
@@ -145,7 +144,16 @@ button.addTo:hover {
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
-    column-gap: 40px;
+    column-gap: 38px;
+}
+
+.qty-controls span {
+    display: flex;
+}
+
+.qty-controls .qty {
+    width: 7px;
+    background-color: black;
 }
 
 .qty-controls span:hover {
@@ -156,18 +164,19 @@ button.addTo:hover {
     pointer-events: auto;
     width: 15px;
     height: 15px;
-    padding: 2px;
+    padding: 0;
     border: 1px solid var(--rose50);
-    border-radius: 50px;
-}
-
-.minus img {
-    padding-top: 4px;
+    border-radius: 50%;
 }
 
 .minus img,
 .plus img {
+    display: block;
+    width: 60%; 
+    height: 100%;
     filter: brightness(100) saturate(100%);
+    
+    transform: translate(2.5px);
 }
 
 .minus:hover img,
@@ -391,7 +400,7 @@ span.obs-carbon::before {
 #modal {
     background-color: #ffffff;
     padding: 20px 30px;
-    width: clamp(400px, 22vw, 700px);
+    width: clamp(420px, 22vw, 700px);
     border-radius: 10px;
     text-align: left;
 }
