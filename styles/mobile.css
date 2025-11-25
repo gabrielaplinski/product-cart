@@ -13,17 +13,17 @@ h1.titproduct {
     grid-template-columns: 1fr;
 }
 
-.products .item-product {
-    line-height: 25px;
+.data {
+    line-height: clamp(15px, 2em, 20px);
 }
 
 button.addTo {
-    width: 50%;
+    width: 50vw;
     height: 40px;
     font-size: clamp(0.3rem, 1.7vw + 0.3rem, 15px);
 
-    bottom: 4%;
-    left: 24%;
+    bottom: 0%;
+    left: 20%;
 }
 
 button.addTo::before {
@@ -32,15 +32,20 @@ button.addTo::before {
 }
 
 p.description {
-    font-size: 1em;
+    font-size: clamp(0.3rem, 1.7vw + 0.3rem, 15px);
 }
 
 p.item {
-    font-size: .9em;
+    font-size: clamp(0.3rem, 1.7vw + 0.3rem, 15px);
 }
 
 p.price {
-    font-size: .9em;
+    font-size: clamp(0.3rem, 1.7vw + 0.3rem, 15px);
+}
+
+aside {
+    width: 85vw;
+    margin-top: 20px;
 }
 
 #modal {
