@@ -89,8 +89,8 @@ button.addTo {
     border-radius: 20px;
     border: 1px solid var(--rose300);
     padding: 6px 13px 6px;
-    width: 72%;
-    height: 33px;
+    width: 7rem;
+    height: /*2.6rem;*/ 33px;
 
     display: flex;
     align-items: center;
@@ -343,13 +343,18 @@ aside p.msg-empty {
 }
 
 #cart-total span.obs-carbon {
+    width: 100%;
     background-color: var(--rose50);
     text-align: center;
-    font-size: .6rem;
+    font-size: clamp(0.65rem, 0.853rem + -0.225vw, 0.8rem);
     padding: 10px 0 12px;
     flex-grow: 1;
     border-radius: 7px;
     color: var(--rose900);
+}
+
+span.obs-carbon #emphasis {
+    font-weight: 600;
 }
 
 span.obs-carbon::before {
@@ -367,7 +372,7 @@ span.obs-carbon::before {
     color: #ffffff;
     font-family: var(--totfont);
     font-weight: 500;
-    font-size: .7rem;
+    font-size: clamp(0.7rem, 0.97rem + -0.3vw, 0.9rem); /*.9rem;*/ /*.7rem;*/
     border: none;
     border-radius: 30px;
     width: 100%;

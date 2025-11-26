@@ -18,12 +18,11 @@ h1.titproduct {
 }
 
 button.addTo {
-    width: 50vw;
-    height: 40px;
+    width: 9rem;
     font-size: clamp(0.3rem, 1.7vw + 0.3rem, 15px);
 
-    bottom: 0%;
-    left: 20%;
+    bottom: -2%;
+    left: 25%;
 }
 
 button.addTo::before {

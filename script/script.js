@@ -181,7 +181,7 @@ function updateCart() {
     emptyCart.style.display = cart.length > 0 ? "none" : "block"
     cartTotal.innerHTML = `<span class="label">Order Total</span>
                         <span class="tot-value">$${total.toFixed(2)}</span>
-                        <span class="obs-carbon">This is a <strong>carbon-neutral</strong> delivery</span>
+                        <span class="obs-carbon">This is a <span id="emphasis">carbon-neutral</span> delivery</span>
                         <button id="confirm" class="buttons">Confirm Order</button>`;
     cartQuantity.textContent = totalItems;
     cartTotal.style.display = cart.length > 0 ? "flex" : "none";
