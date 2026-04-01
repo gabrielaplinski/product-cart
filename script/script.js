@@ -50,9 +50,9 @@ function updateButtonState(button, id) {
 
     button.textContent = "";
     button.innerHTML = `<div class="qty-controls">
-                        <span class="minus" role="button" tabindex="0"><img src="../assets/images/icon-decrement-quantity.svg" alt=""></span>
+                        <span class="minus" role="button" tabindex="0"><img src="./assets/images/icon-decrement-quantity.svg" alt=""></span>
                         <span class="qty">${item.quantity}</span>
-                        <span class="plus" role="button" tabindex="0"><img src="../assets/images/icon-increment-quantity.svg" alt=""></span>
+                        <span class="plus" role="button" tabindex="0"><img src="./assets/images/icon-increment-quantity.svg" alt=""></span>
                         </div>`;
     const minusButton = button.querySelector(".minus");
     const plusButton = button.querySelector(".plus");
@@ -105,7 +105,7 @@ function attachConfirmButton() {
         let total = 0;
 
         cart.forEach(item => {
-            const thumbSrc = `../assets/images/thumbnails/${item.id}.jpg`;
+            const thumbSrc = `./assets/images/thumbnails/${item.id}.jpg`;
             const li = document.createElement("li");
             li.innerHTML = `<img src="${thumbSrc}" class="modal-img">
                             <div class="item-cart-confirm">
