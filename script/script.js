@@ -234,4 +234,15 @@ function resetButton(id) {
     }
 }
 
-document.getElementById
+document.getElementById("new-order").addEventListener("click", () => {
+    cart.splice(0, cart.length);
+
+    document.querySelectorAll(".addTo").forEach(button => {
+        const id = button.dataset.id;
+        resetButton(id)
+    });
+
+    localStorage.removeItem("cart");
+    updateCart();
+    modalOverlay.style.display = "none";
+})

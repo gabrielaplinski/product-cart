@@ -10,9 +10,7 @@ para a eficácia da compra e confortáveis para enriquecer a experiência do usu
 - HTML5
 
 ## Status do projeto
-Em desenvolvimento.
+Em fase de finalização.
 
-## Próximos passos
-- Ajuste de botões
-- Finalização do carrinho final
+## Próximo passo
 - Finalização da resposividade da página
