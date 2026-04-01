@@ -21,7 +21,7 @@ button.addTo {
     width: 9rem;
     font-size: clamp(0.3rem, 1.7vw + 0.3rem, 15px);
 
-    bottom: -2%;
+    bottom: 4%;
     left: 25%;
 }
 
